@@ -1,26 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { Switch, Route } from 'react-router-dom'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import Home from './cointainers/Home'
+import Activate from './cointainers/Activate'
+import Login from './cointainers/Login'
+import ResetPassword from './cointainers/ResetPassword'
+import ResetPasswordConfirm from './cointainers/ResetPasswordConfirm'
+import Signup from './cointainers/Signup'
+import Layout from './hocs/Layout'
 
-export default App;
+const App = () => (
+  <Layout>
+    <Switch>
+      <Route exact path='/' component={Home}/>
+      <Route exact path='/activate/:uid/:token' component={Activate}/>
+      <Route exact path='/login' component={Login}/>
+      <Route exact path='/reset-password' component={ResetPassword}/>
+      <Route exact path='/password/reset/confirm/:uid/:token' component={ResetPasswordConfirm}/>
+      <Route exact path='/signup' component={Signup}/>
+    </Switch>
+  </Layout>
+)
+
+export default App
